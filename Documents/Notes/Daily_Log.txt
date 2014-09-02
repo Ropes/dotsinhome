@@ -1,0 +1,132 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2014-08-26T09:06:09-07:00
+
+====== Daily Log ======
+Created Tuesday 26 August 2014
+
+**2014/8/26**
+Kafka Setup
+* Kafka 8.+ uses gradlew instead of sbt
+	* Fails to compile due to Scala error.. Possibly Java problem?
+	* Updated documentation on setup
+
+Infrastructure overview 
+
+Node salt discovery
+Built docker image of Node setup
+* One repository fails to load from npm: docpad
+
+**2014/8/27**
+Familiarized with loges to start looking into bug involving failed messages being sent to ES
+* Not extreme priority, panic occurs on occasion 
+
+===== Cassandra Upgrade =====
+* Began reading docs: http://wiki.apache.org/cassandra/Operations
+* Token ring node clusters
+* Braindump of Cassandra Issues from Schmichael
+	* Cassandra cannot run on debian/ubuntu distros on Xen and by extension
+	* https://github.com/lytics/lio/issues/1266
+	* Inability to run Debian means it's no longer configured by Saltstack... *cringe*
+* Investigated Cassandra instances
+	* Data stored in [[/vol/cass/data]]
+	* casandra ring seeds: 10.234.170.16 (cass7.prod)
+		* Why are they all not specified to each other?  cass7.prod is master?
+		* Instances could have 2x80GB SSD's attached if desired!
+			* Not attached to current machines
+	* Configuration seems to differ little from the default configurations
+	* Investigate:  * Require nodetool rebuild_index to specify index names (CASSANDRA-7038)
+* Questions!
+	* Any Client drivers attached/integraded with current Cassandra instances[cass7, cass8, cass9]
+	* Current snapshot procedures? If any?
+	* Logging Configuration:  salt/cassandra/log4j-server.properties is not set up on servers in either [[/etc/cassandra/[conf]] || default.conf]
+		* log4j.appender.R.layout.ConversionPattern setting differs between files(Datestamp formatting)
+'''
+2.0.9
+=====
+Upgrading
+---------
+- Default values for read_repair_chance and local_read_repair_chance have been
+swapped. Namely, default read_repair_chance is now set to 0.0, and default
+local_read_repair_chance to 0.1.
+- Queries selecting only CQL static columns were (mistakenly) not returning one
+result per row in the partition. This has been fixed and a SELECT DISTINCT
+can be used when only the static column of a partition needs to be fetch
+without fetching the whole partition. But if you use static columns, please
+make sure this won't affect you (see CASSANDRA-7305 for details).
+
+Do not issue these types of queries during a rolling restart: DDL, TRUNCATE
+'''
+
+More detailed documentation on Upgrading: http://www.datastax.com/documentation/upgrade/doc/upgrade/cassandra/upgradeBestPracticeC_c.html
+
+Seed only being set to 10.234.170.16
+* Set seeds to two other cassandra instances in cluster
+
+===== Docker =====
+eddy, eddyworker, entrpcwk
+Investigated private docker deployments
+* http://www.activestate.com/blog/2014/01/deploying-your-own-private-docker-registry
+
+===== Deployment to Dev =====
+Watched with Schmichael in debug of mongo configuration
+* something_score workflow wasn't loading configuration settings before they were necessary
+
+Metrics http://192.168.115.106:8000/#/dashboard/elasticsearch
+* Cassandra not logging metrics to elasticsearch
+	* Lack of Saltstack integration?
+
+Backups not being done for Cassandra or [[ElasticSearch]] due to native replication 
+
+**2014/8/28**
+Cassandra Cont.
+* Proper seed configuration
+	* http://www.datastax.com/documentation/cassandra/1.2/cassandra/initialize/initializeMultipleDS.html
+	* - seeds:  "10.168.66.41,10.176.170.59"
+	* "10.234.170.16:9042","10.102.147.29:9042","10.140.171.3:9042"
+* Snapshots
+
+Elastic Search Nightmare
+* Disk filling up es5 caused failure of the node
+* System went into split brained state
+* curl -XGET 'http://localhost:9200/_cluster/stats?human&pretty'
+
+Saltstack-Python disk checker
+* Use saltstack to populate monit config to check all the attached volumes and log usage data
+* Use grain function to run on server and find all disks
+
+Dev setup for elastic search
+* Kvm issues
+	* 'trusty' not supported in version of vmbuilder on lyd3
+		* proposed apt repo supports trusty
+			* update and dns lookups fail 
+				* ping fails..
+					* network unreachable on lyd3....
+						* yakshaving.jpg
+						* Reboot of lyd3 fixed networking ?
+		* reinstalling python-vm-builder  **NOT** ubuntu-vm-builder solved problem
+	* virsh console <boxname> ... seems to take special configuration.. give mac to aaron
+	* updated docs
+
+
+**2014/8/29**
+Disk detection
+* Python Grain script to detect drives
+	* Tested on desktop and amazon ubuntu
+* Make grain disk info accessible
+* Embed grains in monit conf
+	* ? failing
+
+Vagrant setup
+* Vagrant now sucks.. have to login to get boxes
+
+Steven's Compiled Node deployments
+* Codeship packages up the static files
+	* Sends artifact to acessible location for building [S3?]
+		* Check file every few minutes for changes then invoke salt deploy to dev environment
+	* Salt has to update the evinroment js file
+	* S3 or locally hosted drop location: https://www.codeship.io/documentation/continuous-integration/keep-build-artifacts/
+
+
+**2014/9/2**
+

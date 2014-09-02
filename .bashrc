@@ -1,5 +1,4 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
 # If not running interactively, don't do anything
@@ -119,14 +118,12 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 alias lock='gnome-screensaver-command -l'
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/ropes/dev/GoSrc/go/bin
-export GOROOT=/home/ropes/dev/GoSrc/go
 #export GOROOT=/usr/local/go
-export GOPATH=$HOME/dev/go
-export PATH=$PATH:$GOPATH/bin
+#export GOPATH=$HOME/dev/go
+#export PATH=$PATH:$GOPATH/bin
 
 export PATH=$PATH:$HOME/local/bin
 
-set -o vi
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -179,4 +176,10 @@ function FABULOUS
 FAB="${RED}>>${ORANGE}>>${YELLOW}>>${GREEN}>>${BLUE}>>${IPURPLE}>>${NO_COLOR}"; 
 CASCADIA="${LIGHT_BLUE}>>>>${IWHITE}>>>>${IGREEN}>>>>${NO_COLOR}"; 
 export PS1="${IBLUE}(\A)${IGREEN}\u@\h:${LIGHT_CYAN}\w\n${CASCADIA}"
+
+. /home/josh/.lyticsenv
+. /home/josh/.local_env
+
+export EDITOR=/usr/bin/vim
+set -o vi
 

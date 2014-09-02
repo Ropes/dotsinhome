@@ -1,7 +1,8 @@
 "Go Lang
 filetype off
-filetype plugin indent off
+"filetype plugin indent off
 "set runtimepath+=$GOROOT/misc/vim
+set nocompatible
 filetype plugin indent on
 syntax on
 
@@ -17,10 +18,9 @@ set completeopt=menuone,longest,preview
 execute pathogen#infect()
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
-"set softtabstop=2
 
 set smartindent
 set autoindent
