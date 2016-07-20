@@ -89,6 +89,14 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias gst='git status'
+alias gpp='git pull --prune'
+alias gtp='go test -p 1 | grep -v "no test"'
+alias gssf='gcloud compute ssh --zone=us-central1-f'
+alias gsba='gcloud compute ssh --zone=us-central1-f -A'
+alias gsl='glock sync github.com/lytics/lio'
+alias gcil='gcloud compute instances list | sed -n "1!p" | sort'
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -113,14 +121,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 #PATH=$PATH:$HOME/dev/sbt/bin
 
 alias lock='gnome-screensaver-command -l'
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/ropes/dev/GoSrc/go/bin
-export GOROOT=/home/ropes/dev/GoSrc/go
-#export GOROOT=/usr/local/go
+#export PATH=$PATH:/home/ropes/dev/GoSrc/go/bin
 export GOPATH=$HOME/dev/go
 export PATH=$PATH:$GOPATH/bin
 
@@ -180,3 +186,13 @@ FAB="${RED}>>${ORANGE}>>${YELLOW}>>${GREEN}>>${BLUE}>>${IPURPLE}>>${NO_COLOR}";
 CASCADIA="${LIGHT_BLUE}>>>>${IWHITE}>>>>${IGREEN}>>>>${NO_COLOR}"; 
 export PS1="${IBLUE}(\A)${IGREEN}\u@\h:${LIGHT_CYAN}\w\n${CASCADIA}"
 
+source $HOME/.lyticsenv
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/home/ropes/gcloud/google-cloud-sdk/path.bash.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/home/ropes/gcloud/google-cloud-sdk/completion.bash.inc'
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
