@@ -1,4 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
 # If not running interactively, don't do anything
@@ -27,7 +28,7 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -65,7 +66,7 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \W$(__git_ps1) \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -83,14 +84,13 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -112,17 +112,65 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#PATH=$PATH:$HOME/dev/sbt/bin
+alias ack='ack-grep -i'
+alias psc='ps xawf -eo pid,user,cgroup,args'
+alias zan='zsh && source ~/.antigenrc'
+
+alias gco='git checkout'
+alias gst='git status'
+alias gpp='git pull --prune'
+alias gdifs='git diff --staged'
+alias glog='git log --decorate --oneline --graph'
+alias gtp="go test -p 1 ./... 2>&1 | grep -v 'no test'"
+alias gs="cd ~/go/src/"
+
+alias ktl='kubectl'
+alias kpd='kubectl get pods'
+alias klog='kubectl logs'
+alias kwatch='kubectl get events --watch'
+alias kcgc='kubectl config get-contexts'
+alias kcsg='kubectl config set-context'
+
+alias skilock='i3lock -i /home/josh/Pictures/skilock.png'
+alias mtblock='i3lock -i /home/josh/Pictures/mtblock.png'
+alias bleachlock='i3lock -i /home/josh/Pictures/bleach.png'
+alias firelock='i3lock -i /home/josh/Pictures/PANO_20171015_092302.png'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
 
 alias lock='gnome-screensaver-command -l'
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/ropes/dev/GoSrc/go/bin
-#export GOROOT=/usr/local/go
-#export GOPATH=$HOME/dev/go
-#export PATH=$PATH:$GOPATH/bin
-
-export PATH=$PATH:$HOME/local/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+# golang
+gocd () {
+    if [[ $1 = "" ]]; then
+        cd $GOPATH/src
+        return
+    fi
+    local path="$(go list -f '{{.Dir}}' $1 2>/dev/null || go list -f '{{.Dir}}' .../$1)"
+    if [[ -n $path ]]; then
+        cd $path
+    fi
+}
 
 
 export CLICOLOR=1
@@ -177,9 +225,13 @@ FAB="${RED}>>${ORANGE}>>${YELLOW}>>${GREEN}>>${BLUE}>>${IPURPLE}>>${NO_COLOR}";
 CASCADIA="${LIGHT_BLUE}>>>>${IWHITE}>>>>${IGREEN}>>>>${NO_COLOR}"; 
 export PS1="${IBLUE}(\A)${IGREEN}\u@\h:${LIGHT_CYAN}\w\n${CASCADIA}"
 
-. /home/josh/.lyticsenv
 . /home/josh/.local_env
 
 export EDITOR=/usr/bin/vim
 set -o vi
 
+# The next line updates PATH for the Google Cloud SDK.
+source '/home/josh/gcloud/google-cloud-sdk/path.bash.inc'
+
+# The next line enables bash completion for gcloud.
+source '/home/josh/gcloud/google-cloud-sdk/completion.bash.inc'
