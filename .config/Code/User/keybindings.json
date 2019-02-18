@@ -1,0 +1,5 @@
+// Place your key bindings in this file to override the defaults
+[
+{ "key": "alt+shift+[",    "command": "workbench.action.toggleMaximizedPanel" },
+{ "key": "alt+shift+]",    "command": "workbench.action.closePanel" },
+]

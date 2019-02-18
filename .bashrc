@@ -1,5 +1,4 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
 # If not running interactively, don't do anything
@@ -113,20 +112,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#PATH=$PATH:$HOME/dev/sbt/bin
-
 alias lock='gnome-screensaver-command -l'
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/ropes/dev/GoSrc/go/bin
-export GOROOT=/home/ropes/dev/GoSrc/go
-#export GOROOT=/usr/local/go
-export GOPATH=$HOME/dev/go
-export PATH=$PATH:$GOPATH/bin
-
 export PATH=$PATH:$HOME/local/bin
 
-set -o vi
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -178,5 +167,8 @@ function FABULOUS
 #export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$"
 FAB="${RED}>>${ORANGE}>>${YELLOW}>>${GREEN}>>${BLUE}>>${IPURPLE}>>${NO_COLOR}"; 
 CASCADIA="${LIGHT_BLUE}>>>>${IWHITE}>>>>${IGREEN}>>>>${NO_COLOR}"; 
+SHIFTLEFT="${WHITE}<<<<${LIGHT_GREEN}<<<<";
 export PS1="${IBLUE}(\A)${IGREEN}\u@\h:${LIGHT_CYAN}\w\n${CASCADIA}"
 
+export EDITOR=/usr/bin/vim
+set -o vi

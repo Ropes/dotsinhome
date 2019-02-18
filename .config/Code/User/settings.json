@@ -1,0 +1,79 @@
+{
+    "editor.wordWrap": "on",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+	"go.buildOnSave": "package",
+    "go.vetOnSave": "package",
+    "go.coverOnSave": false,
+    "go.coverageOptions": "showUncoveredCodeOnly",
+    "go.coverageDecorator": {
+        "type": "gutter"
+    },
+    "go.coverOnTestPackage": true,
+    // Pick 'gofmt', 'goimports' or 'goreturns' to run on format.
+    "go.formatTool": "goreturns",
+    "go.goroot": "/usr/local/go",
+    "go.gopath": "/home/josh/go",
+    "go.buildTags": "unit tsdb rti",
+    "go.testFlags": ["-v"],
+    "go.testEnvVars": {
+        //"GOCACHE": "off",
+        "SHIFTLEFT_HOME": "/home/josh/.shiftleft"
+    },
+    "go.testTimeout": "30s",
+    "workbench.startupEditor": "welcomePage",
+    "vim.foldfix": true,
+    "vim.easymotion": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<ESC>"]
+        }
+    ],
+    "vim.otherModesKeyBindings": [
+        {   
+            "before": ["<CTRL>", "h"],
+            "after": ["<CTRL>", "w", "h"]
+        },
+        {   
+            "before": ["<CTRL>", "l"],
+            "after": ["<CTRL>", "w", "l"]
+        },
+        {
+            "before": [";", ";"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands",
+                    "args": []
+                }
+            ]
+        }
+    ],
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Adwaita Base16",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "editor.lineNumbers": "on",
+    "editor.minimap.enabled": true,
+    "gitlens.keymap": "alternate",
+    "gitlens.statusBar.command": "gitlens.showQuickRepoHistory",
+    "git.autofetch": true,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
+    "extensions.ignoreRecommendations": true,
+    "breadcrumbs.enabled": true,
+    "editor.renderWhitespace": "none",
+    "window.titleBarStyle": "custom",
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true,
+    "git.confirmSync": false
+}
