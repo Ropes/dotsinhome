@@ -16,7 +16,6 @@
     "go.gopath": "/home/josh/go",
     "go.buildTags": "unit tsdb rti",
     "go.testFlags": ["-v"],
-    //"go.testFlags": ["-v", "-uiaddr=localhost:9090", "-redis=redis://localhost:6379?dbnumber=8", "-tsdb=host=localhost user=tsdb sslmode=disable password=tsdb port=5433", "-elliot=host=localhost port=5432 user=sl sslmode=disable password=sl", "-gatewaygrpc=localhost:5959", "-proxyaddr=http://localhost:8443", "-projectid=hsl"],
     "go.testEnvVars": {
         //"GOCACHE": "off",
         "SHIFTLEFT_HOME": "/home/josh/.shiftleft"
