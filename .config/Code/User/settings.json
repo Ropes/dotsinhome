@@ -2,7 +2,7 @@
     "editor.wordWrap": "on",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
-	"go.buildOnSave": "package",
+    "go.buildOnSave": "package",
     "go.vetOnSave": "package",
     "go.coverOnSave": false,
     "go.coverageOptions": "showUncoveredCodeOnly",
@@ -14,33 +14,55 @@
     "go.formatTool": "goreturns",
     "go.goroot": "/usr/local/go",
     "go.gopath": "/home/josh/go",
-    "go.buildTags": "unit tsdb rti",
-    "go.testFlags": ["-v"],
+    "go.buildTags": "unit rti",
+    "go.testFlags": [
+        "-v"
+    ],
     "go.testEnvVars": {
-        //"GOCACHE": "off",
-        "SHIFTLEFT_HOME": "/home/josh/.shiftleft"
     },
-    "go.testTimeout": "30s",
+    "go.testTimeout": "60s",
     "workbench.startupEditor": "welcomePage",
     "vim.foldfix": true,
     "vim.easymotion": true,
     "vim.insertModeKeyBindings": [
         {
-            "before": ["j", "k"],
-            "after": ["<ESC>"]
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<ESC>"
+            ]
         }
     ],
-    "vim.otherModesKeyBindings": [
-        {   
-            "before": ["<CTRL>", "h"],
-            "after": ["<CTRL>", "w", "h"]
-        },
-        {   
-            "before": ["<CTRL>", "l"],
-            "after": ["<CTRL>", "w", "l"]
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<CTRL>",
+                "h"
+            ],
+            "after": [
+                "<CTRL>",
+                "w",
+                "h"
+            ]
         },
         {
-            "before": [";", ";"],
+            "before": [
+                "<CTRL>",
+                "l"
+            ],
+            "after": [
+                "<CTRL>",
+                "w",
+                "l"
+            ]
+        },
+        {
+            "before": [
+                ";",
+                ";"
+            ],
             "after": [],
             "commands": [
                 {
@@ -50,12 +72,11 @@
             ]
         }
     ],
-    "window.zoomLevel": 1,
-    "workbench.colorTheme": "Adwaita Base16",
+    "window.zoomLevel": 0,
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "editor.lineNumbers": "on",
-    "editor.minimap.enabled": true,
+    "editor.minimap.enabled": false,
     "gitlens.keymap": "alternate",
     "gitlens.statusBar.command": "gitlens.showQuickRepoHistory",
     "git.autofetch": true,
@@ -75,5 +96,18 @@
     "window.titleBarStyle": "custom",
     "gitlens.views.fileHistory.enabled": true,
     "gitlens.views.lineHistory.enabled": true,
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "vs-kubernetes": {
+        "vs-kubernetes.minikube-path": "/home/josh/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    },
+
+    "vscode_custom_css.policy": true,
+    "vscode_custom_css.imports": [
+        "file:////home/josh/dotsinhome/synthwave84.css",
+    ],
+    "workbench.colorTheme": "Winter is Coming (Light)",
+    "workbench.iconTheme": "material-icon-theme",
+    "[sql]": {
+        "editor.defaultFormatter": "mtxr.sqltools"
+    },
 }
