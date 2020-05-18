@@ -15,11 +15,21 @@ au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
+set t_Co=256
+set encoding=utf-8
+set laststatus=2
+let mapleader="\\"
+
+set tabstop=4
+set shiftwidth=4
+set t_Co=256
+
+set showcmd "show incomplete commands
+set number
+"set background=dark
+
 execute pathogen#infect()
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-
-set tabstop=2
-set shiftwidth=2
 set expandtab
 
 set smartindent
@@ -34,12 +44,6 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
-set t_Co=256
-
-set showcmd "show incomplete commands
-set number
-syntax on
-"set background=dark
 
 set nobackup
 set nowritebackup
@@ -48,6 +52,11 @@ set noswapfile
 "filetype indent on
 "filetype on
 "filetype plugin on
+set hlsearch
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 
 if has("gui_running")
   colorscheme ironman 
