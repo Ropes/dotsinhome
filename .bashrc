@@ -172,3 +172,8 @@ export PS1="${IBLUE}(\A)${IGREEN}\u@\h:${LIGHT_CYAN}\w\n${CASCADIA}"
 
 export EDITOR=/usr/bin/vim
 set -o vi
+
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
+
