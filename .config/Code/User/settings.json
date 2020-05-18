@@ -10,17 +10,14 @@
         "type": "gutter"
     },
     "go.coverOnTestPackage": true,
-    // Pick 'gofmt', 'goimports' or 'goreturns' to run on format.
-    "go.formatTool": "goreturns",
     "go.goroot": "/usr/local/go",
     "go.gopath": "/home/josh/go",
-    "go.buildTags": "unit tsdb rti",
     "go.testFlags": ["-v"],
     "go.testEnvVars": {
         //"GOCACHE": "off",
-        "SHIFTLEFT_HOME": "/home/josh/.shiftleft"
     },
-    "go.testTimeout": "30s",
+    "go.testTimeout": "10s",
+    "go.useLanguageServer": true,
     "workbench.startupEditor": "welcomePage",
     "vim.foldfix": true,
     "vim.easymotion": true,
@@ -50,12 +47,12 @@
             ]
         }
     ],
-    "window.zoomLevel": 1,
-    "workbench.colorTheme": "Adwaita Base16",
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Dreamweaver",
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "editor.lineNumbers": "on",
-    "editor.minimap.enabled": true,
+    "editor.minimap.enabled": false,
     "gitlens.keymap": "alternate",
     "gitlens.statusBar.command": "gitlens.showQuickRepoHistory",
     "git.autofetch": true,
@@ -75,5 +72,30 @@
     "window.titleBarStyle": "custom",
     "gitlens.views.fileHistory.enabled": true,
     "gitlens.views.lineHistory.enabled": true,
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "workbench.iconTheme": "vscode-icons",
+    "go.formatTool": "goimports",
+    "terraform.indexing": {
+        "enabled": false,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.languageServer": {
+        "enabled": true,
+        "args": []
+    },
+    "go-tests-outline.go-test-params": "race",
+    "todo-tree.tree.showScanModeButton": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "go.alternateTools": {
+    
+    },
+    "cSpell.userWords": [
+        "akash",
+        "ovrclk"
+    ],
 }
