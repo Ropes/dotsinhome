@@ -28,13 +28,16 @@ set showcmd "show incomplete commands
 set number
 "set background=dark
 
-execute pathogen#infect()
+"execute pathogen#infect()
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 set expandtab
 
 set smartindent
 set autoindent
+set nu
 set ruler
+set mouse=a
+set list
 
 set ignorecase
 set smartcase
@@ -58,7 +61,9 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-if has("gui_running")
+if has("nvim")
+
+elseif has("gui_running")
   colorscheme ironman 
   set gfn=Monospace\ Regular\ 10
   set lines=50 columns=100
