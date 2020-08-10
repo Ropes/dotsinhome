@@ -17,6 +17,7 @@ if dein#load_state('/home/ropes/.cache/dein')
   call dein#add('~/.cache/dein/repos/github.com/fatih/vim-go')
   call dein#add('~/.cache/dein/repos/github.com/vim-airline/vim-airline')
   call dein#add('~/.cache/dein/repos/github.com/airblade/vim-gitgutter')
+  call dein#add('~/.cache/dein/repos/github.com/ctrlpvim/ctrlp.vim')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
 
@@ -37,7 +38,46 @@ syntax on
 "Golang
 "filetype off
 "filetype plugin indent off
-"set runtimepath+=$GOROOT/misc/vim
+set autowrite
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+let g:go_fmt_command = "goimports"
+let g:go_addtags_transform = "camelcase"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+
+" Metalinting
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_deadline = "5s"
+
+" Code movement
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+let g:go_def_mode = 'godef'
+
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+let g:go_auto_type_info = 1
+set updatetime=500
+let g:go_auto_sameids = 1
+
+
 
 
 "Python

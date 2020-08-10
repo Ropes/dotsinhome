@@ -2,6 +2,9 @@
     "editor.wordWrap": "on",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
+    "editor.renderWhitespace": "none",
+
+    //Go Configuration
 	"go.buildOnSave": "package",
     "go.vetOnSave": "package",
     "go.coverOnSave": false,
@@ -11,14 +14,17 @@
     },
     "go.coverOnTestPackage": true,
     "go.goroot": "/usr/local/go",
-    "go.gopath": "/home/josh/go",
+    "go.gopath": "/home/ropes/go",
+    "go.formatTool": "goimports",
     "go.testFlags": ["-v"],
     "go.testEnvVars": {
         //"GOCACHE": "off",
     },
-    "go.testTimeout": "10s",
+    "go.testTimeout": "30s",
     "go.useLanguageServer": true,
+
     "workbench.startupEditor": "welcomePage",
+
     "vim.foldfix": true,
     "vim.easymotion": true,
     "vim.insertModeKeyBindings": [
@@ -47,15 +53,16 @@
             ]
         }
     ],
-    "window.zoomLevel": 0,
-    "workbench.colorTheme": "Dreamweaver",
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Winter is Coming (Light - No Italics)",
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "editor.lineNumbers": "on",
+    "editor.lineNumbers": "off",
     "editor.minimap.enabled": false,
+
+    "git.autofetch": true,
     "gitlens.keymap": "alternate",
     "gitlens.statusBar.command": "gitlens.showQuickRepoHistory",
-    "git.autofetch": true,
     "gitlens.advanced.messages": {
         "suppressCommitHasNoPreviousCommitWarning": false,
         "suppressCommitNotFoundWarning": false,
@@ -66,15 +73,14 @@
         "suppressResultsExplorerNotice": false,
         "suppressShowKeyBindingsNotice": true
     },
+
     "extensions.ignoreRecommendations": true,
     "breadcrumbs.enabled": true,
-    "editor.renderWhitespace": "none",
     "window.titleBarStyle": "custom",
     "gitlens.views.fileHistory.enabled": true,
     "gitlens.views.lineHistory.enabled": true,
     "git.confirmSync": false,
     "workbench.iconTheme": "vscode-icons",
-    "go.formatTool": "goimports",
     "terraform.indexing": {
         "enabled": false,
         "liveIndexing": false,
@@ -88,14 +94,30 @@
         "enabled": true,
         "args": []
     },
-    "go-tests-outline.go-test-params": "race",
     "todo-tree.tree.showScanModeButton": false,
     "vsicons.dontShowNewVersionMessage": true,
-    "go.alternateTools": {
-    
-    },
     "cSpell.userWords": [
+        "Kubernetes",
+        "Roppo",
         "akash",
+        "ansible",
+        "mkdir",
         "ovrclk"
     ],
+    "cSpell.enabled": true,
+    "cSpell.enableFiletypes": [
+        "!jade",
+        "!java",
+        "dockerfile",
+        "dot",
+        "makefile",
+        "shellscript",
+        "vimrc",
+        "xml"
+    ],
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "telemetry.enableTelemetry": false,
+    "gitlens.advanced.telemetry.enabled": false,
 }
