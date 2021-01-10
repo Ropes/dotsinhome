@@ -11,3 +11,4 @@ alias gpp='git pull --prune'
 
 # Kubernetes
 alias ktl='kubectl'
+alias xmx='xmodmap ~/.Xmodmap'
