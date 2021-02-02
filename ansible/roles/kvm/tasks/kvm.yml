@@ -1,0 +1,9 @@
+- name: "Install KVM"
+  apt:
+    name:
+      - qemu-system
+      - libvirt-clients
+      - libvirt-daemon-system
+    state: present
+    update_cache: true
+  become: true

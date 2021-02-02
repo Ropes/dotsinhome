@@ -1,0 +1,6 @@
+---
+- name: apply kvm installation
+  hosts: lab
+  remote_user: ropes
+  roles: 
+    - kvm
