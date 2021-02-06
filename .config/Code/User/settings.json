@@ -54,10 +54,10 @@
         }
     ],
     "window.zoomLevel": 1,
-    "workbench.colorTheme": "Winter is Coming (Light - No Italics)",
+    "workbench.colorTheme": "Hackers Haze",
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "editor.lineNumbers": "off",
+    "editor.lineNumbers": "interval",
     "editor.minimap.enabled": false,
 
     "git.autofetch": true,
