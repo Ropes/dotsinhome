@@ -111,7 +111,7 @@ font:
   bold_italic:
     family: FiraCode
     style: Bold Italic
-  size: 9.0
+  size: 15.0
 
 # Font configuration
 #font:

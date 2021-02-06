@@ -18,6 +18,7 @@ if dein#load_state('/home/ropes/.cache/dein')
   call dein#add('~/.cache/dein/repos/github.com/vim-airline/vim-airline')
   call dein#add('~/.cache/dein/repos/github.com/airblade/vim-gitgutter')
   call dein#add('~/.cache/dein/repos/github.com/ctrlpvim/ctrlp.vim')
+  call dein#add('~/.cache/dein/repos/github.com/easymotion/vim-easymotion')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
 
@@ -34,6 +35,21 @@ endif
 filetype plugin indent on
 syntax on 
 
+" Easymotion
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 "Golang
 "filetype off
@@ -142,8 +158,8 @@ if !exists('g:airline_symbols')
 endif
 
 if has("nvim")
-  colorscheme papercolor
-
+  colorscheme peaksea
+  colorscheme neon
 elseif has("gui_running")
   colorscheme ironman 
   set gfn=Monospace\ Regular\ 10
@@ -154,7 +170,7 @@ elseif exists('GuiColorScheme') == 2
 "j  "expand("/home/ropes/.vim/plugin/guicolorscheme")
 "  exe 'GuiColorScheme' molokai
 else
-  colorscheme molokai
+  colorscheme neon
   "colorscheme ironman
 endif
 
