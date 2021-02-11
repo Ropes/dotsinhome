@@ -1,0 +1,20 @@
+- name: "Install Utilities"
+  apt:
+    name:
+      - git
+      - gpg
+      - htop
+      - tmux
+      - openvpn
+      - wireguard
+    state: present
+    update_cache: true
+
+- name: "Install vims"
+  apt:
+    name:
+      - neovim
+      - vim-common
+    state: present
+    update_cache: true
+

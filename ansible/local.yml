@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  gather_facts: yes
+  roles:
+    - common
+    - dev
+      #- kvm

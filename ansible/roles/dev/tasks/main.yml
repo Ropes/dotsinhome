@@ -1,0 +1,9 @@
+- name: "Install i3 WM"
+  apt:
+    name:
+      - i3
+      - i3-gaps-wm
+      - i3lock-fancy
+      - i3status
+    state: present
+    update_cache: true

@@ -3,7 +3,11 @@
     name:
       - qemu-system
       - libvirt-clients
+      - libvirt-daemon
       - libvirt-daemon-system
+      - bridge-utils 
+      - virtinst
+      - virt-manager
     state: present
     update_cache: true
   become: true

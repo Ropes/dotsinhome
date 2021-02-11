@@ -1,4 +1,0 @@
-- name: clean up the apt cache
-  apt:
-    autoclean: true
-  become: true
