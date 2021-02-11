@@ -7,3 +7,6 @@ checkpt = commit -am '[ci skip] checkpt'
 	allow = always
 [pull]
 	rebase = false
+[user]
+	name = Josh Roppo
+	email = joshroppo@gmail.com
