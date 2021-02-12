@@ -4,6 +4,7 @@
       - git
       - gpg
       - htop
+      - jq
       - tmux
       - openvpn
       - wireguard
