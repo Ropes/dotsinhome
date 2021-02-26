@@ -1,0 +1,16 @@
+# /etc/systemd/system/akashd.service
+[Unit]
+Description=Akash Network Node
+After=network.target
+
+[Service]
+Type=simple
+User=akash
+WorkingDirectory=<TODO>
+ExecStart=/usr/local/bin/akashd start --home=<TODO>.akashd
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
