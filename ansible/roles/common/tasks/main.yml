@@ -5,6 +5,7 @@
       - gpg
       - htop
       - jq
+      - fail2ban
       - tmux
       - openvpn
       - wireguard
