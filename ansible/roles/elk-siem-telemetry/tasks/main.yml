@@ -1,0 +1,12 @@
+- name: "Install Auditbeat"
+  apt:
+    deb: https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-7.11.2-amd64.deb
+
+- name: "Install Filebeat"
+  apt:
+    deb: https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-7.11.2-amd64.deb
+
+    #- name: "Install libpcap"
+    #- name: "Install Packetbeat"
+    #  apt:
+    #    deb: https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.11.2-amd64.deb
