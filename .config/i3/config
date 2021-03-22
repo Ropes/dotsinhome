@@ -17,8 +17,17 @@ exec /usr/bin/xmodmap ~/.Xmodmap
 #exec --no-startup-id nitrogen --restore; sleep 1;
 #exec --no-startup-id picom -b
 #exec_always --no-startup-id i3-auto-layout
+# Polybar config launching the modified 'forest' theme
 exec_always --no-startup-id ~/.config/polybar/launch.sh --forest
-#exec --no-startup-id mpd
+# feh used to configure and set the firewall
+exec_always --no-startup-id feh --no-fehbg --bg-scale ~/.wallpapers/wallhaven-k9k3r1.jpg &
+# compton enables Alacritty transparency over background
+exec_always --no-startup-id compton --config ~/.config/compton.conf
+
+# MATE Applets
+exec_always --no-startup-id mate-settings-daemon
+exec_always --no-startup-id mate-power-manager
+exec_always --no-startup-id nm-applet
 
 #########################################################################
 ## System Basics
@@ -57,21 +66,11 @@ for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 
 #
 # GNOME Applets
-# exec /usr/libexec/gnome-settings-daemon
 # exec /usr/bin/gnome-keyring-daemon --start --foreground --components=secrets
 # exec /usr/bin/gnome-keyring-daemon --daemonize --login
 # exec /usr/bin/gnome-keyring-daemon
 #
 # seahorse
-# exec --no-startup-id nm-applet
-# exec --no-startup-id gnome-sound-applet
-
-# MATE Applets
-exec --no-startup-id exec mate-settings-daemon
-exec --no-startup-id exec mate-screensaver
-exec --no-startup-id exec mate-power-manager
-#exec --no-startup-id exec nm-applet
-
 # TODO: pick default display
 #exec xrandr --output LVDS1 --primary
 #force_xinerama yes
