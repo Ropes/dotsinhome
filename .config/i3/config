@@ -28,6 +28,8 @@ exec_always --no-startup-id compton --config ~/.config/compton.conf
 exec_always --no-startup-id mate-settings-daemon
 exec_always --no-startup-id mate-power-manager
 exec_always --no-startup-id nm-applet
+exec_always --no-startup-id start-pulseaudio-x11
+exec_always --no-starutp-id mate-volume-control-status-icon
 
 #########################################################################
 ## System Basics
@@ -180,19 +182,6 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-
-# TODO: Debug how to make japanese characters display without requiring their input.
-#set $ws1 "一"
-#set $ws2 "二" 
-#set $ws3 "三" 
-#set $ws4 "四"
-#set $ws5 "五" 
-#set $ws6 "六"
-#set $ws7 "七"
-#set $ws8 "八"
-#set $ws9 "九"
-#set $ws10 "十"
-
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
