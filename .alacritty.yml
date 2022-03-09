@@ -6,12 +6,15 @@
 # loaded earlier with those loaded later in the chain. The file itself will
 # always be loaded last.
 import:
-  - /home/ropes/.config/alacritty/ayu-dark.yml
   - /home/ropes/.config/alacritty/tomorrow-night.yml
   - /home/ropes/.config/alacritty/tomorrow-night-bright.yml
-  - /home/ropes/.config/alacritty/nord.yml
   - /home/ropes/.config/alacritty/blood-moon.yml
+  - /home/ropes/.config/alacritty/ir-black.yml
+  - /home/ropes/.config/alacritty/iceberg.yml
+  - /home/ropes/.config/alacritty/pencil-light.yml
+  - /home/ropes/.config/alacritty/ayu-dark.yml
   - /home/ropes/.config/alacritty/seagull.yml
+  - /home/ropes/.config/alacritty/nord.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -116,7 +119,7 @@ font:
   bold_italic:
     family: FiraCode
     style: Bold Italic
-  size: 15.0
+  size: 9.0
 
 # Font configuration
 #font:
@@ -340,7 +343,7 @@ font:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.8
+background_opacity: 0.95
 
 #selection:
   # This string contains all characters that are used as separators for
