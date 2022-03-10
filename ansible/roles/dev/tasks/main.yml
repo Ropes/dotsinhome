@@ -1,9 +1,15 @@
 - name: "Install i3 WM"
   apt:
     name:
-      - i3
+      - i3-wm
+      - i3-gaps
       - i3-gaps-wm
+      - i3lock
       - i3lock-fancy
       - i3status
+      - polybar
+      - fonts-firacode
+      - fonts-mplus
+      - fonts-noto-mono
     state: present
     update_cache: true

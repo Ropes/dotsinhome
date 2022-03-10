@@ -120,12 +120,13 @@ inoremap <S-Tab> <C-d>
 "See invisible characters
 set list listchars=tab:>\ ,trail:+,eol:$
 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 set showcmd "show incomplete commands
-set number
+set relativenumber
+"set ruler
 
 "execute pathogen#infect()
 "set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
@@ -134,7 +135,6 @@ set expandtab
 set smartindent
 set autoindent
 set nu
-set ruler
 set mouse=a
 set list
 
@@ -159,6 +159,7 @@ endif
 
 if has("nvim")
   colorscheme peaksea
+  colorscheme ironman
   colorscheme neon
 elseif has("gui_running")
   colorscheme ironman 
@@ -170,7 +171,7 @@ elseif exists('GuiColorScheme') == 2
 "j  "expand("/home/ropes/.vim/plugin/guicolorscheme")
 "  exe 'GuiColorScheme' molokai
 else
-  colorscheme neon
-  "colorscheme ironman
+  "colorscheme neon
+  colorscheme ironman
 endif
 

@@ -16,17 +16,20 @@ exec /usr/bin/xmodmap ~/.Xmodmap
 
 #exec --no-startup-id nitrogen --restore; sleep 1;
 #exec --no-startup-id picom -b
-#exec_always --no-startup-id i3-auto-layout
+#
 # Polybar config launching the modified 'forest' theme
 exec_always --no-startup-id ~/.config/polybar/launch-forest.sh
-# feh used to configure and set the firewall
-exec_always --no-startup-id feh --no-fehbg --bg-scale ~/.wallpapers/wallhaven-k9k3r1.jpg &
+# feh used to configure desktop background(firewatch)
+#firewatch: exec_always --no-startup-id feh --no-fehbg --bg-scale ~/.wallpapers/wallhaven-k9k3r1.jpg &
+#wolf cave: exec_always --no-startup-id feh --no-fehbg --bg-scale ~/.wallpapers/wallhaven-od6qj5.png &
+#ISS aurora: exec_always --no-startup-id feh --no-fehbg --bg-scale ~/.wallpapers/wallhaven-eo17eo.jpg &
+exec_always --no-startup-id feh --no-fehbg --bg-scale ~/.wallpapers/Artist-Conception-James-Webb-Space-Telescope-scaled.jpg
 # compton enables Alacritty transparency over background
 exec_always --no-startup-id compton --config ~/.config/compton.conf
 
 # MATE Applets
-exec_always --no-startup-id mate-settings-daemon
-exec_always --no-startup-id mate-power-manager
+#exec_always --no-startup-id mate-settings-daemon
+#exec_always --no-startup-id mate-power-manager
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id start-pulseaudio-x11
 exec_always --no-starutp-id mate-volume-control-status-icon
@@ -65,6 +68,7 @@ for_window [class="Nitrogen"] floating enable enable border normal
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+# $mod + Shift + Space to toggle floating
 
 #
 # GNOME Applets
@@ -118,6 +122,10 @@ bindsym XF86AudioPrev exec playerctl previous
 #bindsym $mod+Shift+p exec gnome-screensaver-command --lock
 bindsym $mod+Shift+p exec i3lock-fancy -gpf FiraCode-Regular -- scrot -z
 #bindsym $mod+Shift+p exec i3lock -c 8888ff88 -f
+#
+# Screenshot
+bindsym Print exec shutter --full
+bindsym $mod+Print exec shutter --select
 
 # change focus
 bindsym $mod+h focus left

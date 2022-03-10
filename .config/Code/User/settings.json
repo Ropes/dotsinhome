@@ -22,6 +22,8 @@
     },
     "go.testTimeout": "30s",
     "go.useLanguageServer": true,
+    "go.toolsManagement.autoUpdate": true,
+    "go.coverOnSingleTestFile": true,
 
     "workbench.startupEditor": "welcomePage",
 
@@ -53,8 +55,7 @@
             ]
         }
     ],
-    "window.zoomLevel": 1,
-    "workbench.colorTheme": "Hackers Haze",
+    "workbench.colorTheme": "Hack The Box",
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "editor.lineNumbers": "interval",
@@ -120,4 +121,26 @@
     },
     "telemetry.enableTelemetry": false,
     "gitlens.advanced.telemetry.enabled": false,
+
+    // Rust
+    "rust-client.rustupPath": "~/.cargo/bin/rustup",
+
+    // Ruby
+    "ruby.codeCompletion": "rcodetools",
+    "ruby.intellisense": "rubyLocate",
+    "ruby.useLanguageServer": true,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "window.zoomLevel": 1,
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
 }

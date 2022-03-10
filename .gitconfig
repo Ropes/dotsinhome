@@ -10,3 +10,5 @@ checkpt = commit -am '[ci skip] checkpt'
 [user]
 	name = Josh Roppo
 	email = joshroppo@gmail.com
+[init]
+	defaultBranch = main
