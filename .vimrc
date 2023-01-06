@@ -2,34 +2,52 @@
 if &compatible
   set nocompatible               " Be iMproved
 endif
-" Required:
-set runtimepath+=/home/ropes/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/home/ropes/.cache/dein')
-  call dein#begin('/home/ropes/.cache/dein')
+"if dein#load_state('/home/ropes/.cache/dein')
+"  call dein#begin('/home/ropes/.cache/dein')
+"
+"  " Let dein manage dein
+"  " Required:
+"  call dein#add('/home/ropes/.cache/dein/repos/github.com/Shougo/dein.vim')
+"
+"  " Add or remove your plugins here like this:
+"  call dein#add('~/.cache/dein/repos/github.com/fatih/vim-go')
+"  call dein#add('~/.cache/dein/repos/github.com/vim-airline/vim-airline')
+"  call dein#add('~/.cache/dein/repos/github.com/airblade/vim-gitgutter')
+"  call dein#add('~/.cache/dein/repos/github.com/ctrlpvim/ctrlp.vim')
+"  call dein#add('~/.cache/dein/repos/github.com/easymotion/vim-easymotion')
+"  call dein#add('Shougo/neosnippet.vim')
+"  call dein#add('Shougo/neosnippet-snippets')
+"
+"  " Required:
+"  call dein#end()
+"  call dein#save_state()
+"endif
+"" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('/home/ropes/.cache/dein/repos/github.com/Shougo/dein.vim')
+call plug#begin()
+    " Appearance
+    Plug 'vim-airline/vim-airline'
+    Plug 'ryanoasis/vim-devicons'
 
-  " Add or remove your plugins here like this:
-  call dein#add('~/.cache/dein/repos/github.com/fatih/vim-go')
-  call dein#add('~/.cache/dein/repos/github.com/vim-airline/vim-airline')
-  call dein#add('~/.cache/dein/repos/github.com/airblade/vim-gitgutter')
-  call dein#add('~/.cache/dein/repos/github.com/ctrlpvim/ctrlp.vim')
-  call dein#add('~/.cache/dein/repos/github.com/easymotion/vim-easymotion')
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
+    " Utilities
+    Plug 'sheerun/vim-polyglot'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'preservim/nerdtree'
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'easymotion/vim-easymotion'
 
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
+    " Completion / linters / formatters
+    Plug 'plasticboy/vim-markdown'
+
+    " Git
+    Plug 'airblade/vim-gitgutter'
+call plug#end()
+
 
 " Required:
 filetype plugin indent on
@@ -82,7 +100,7 @@ let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_deadline = "5s"
 
 " Code movement
-autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang A  call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
@@ -92,9 +110,6 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 let g:go_auto_type_info = 1
 set updatetime=500
 let g:go_auto_sameids = 1
-
-
-
 
 "Python
 au BufRead,BufNewFile *.py,*.pyw setlocal smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
@@ -128,7 +143,6 @@ set showcmd "show incomplete commands
 set relativenumber
 "set ruler
 
-"execute pathogen#infect()
 "set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 set expandtab
 
