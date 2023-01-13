@@ -4,14 +4,7 @@ if &compatible
 endif
 
 " Required:
-"if dein#load_state('/home/ropes/.cache/dein')
-"  call dein#begin('/home/ropes/.cache/dein')
-"
-"  " Let dein manage dein
-"  " Required:
-"  call dein#add('/home/ropes/.cache/dein/repos/github.com/Shougo/dein.vim')
-"
-"  " Add or remove your plugins here like this:
+"  Add or remove your plugins here like this:
 "  call dein#add('~/.cache/dein/repos/github.com/fatih/vim-go')
 "  call dein#add('~/.cache/dein/repos/github.com/vim-airline/vim-airline')
 "  call dein#add('~/.cache/dein/repos/github.com/airblade/vim-gitgutter')
@@ -19,15 +12,7 @@ endif
 "  call dein#add('~/.cache/dein/repos/github.com/easymotion/vim-easymotion')
 "  call dein#add('Shougo/neosnippet.vim')
 "  call dein#add('Shougo/neosnippet-snippets')
-"
-"  " Required:
-"  call dein#end()
-"  call dein#save_state()
-"endif
-"" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
+
 
 call plug#begin()
     " Appearance
@@ -43,6 +28,8 @@ call plug#begin()
 
     " Completion / linters / formatters
     Plug 'plasticboy/vim-markdown'
+    Plug 'fatih/vim-go'
+    Plug 'prabirshrestha/vim-lsp'
 
     " Git
     Plug 'airblade/vim-gitgutter'
@@ -118,6 +105,33 @@ au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
+" Rust Analyzer
+if executable('rust-analyzer')
+  au User lsp_setup call lsp#register_server({
+        \   'name': 'Rust Language Server',
+        \   'cmd': {server_info->['rust-analyzer']},
+        \   'whitelist': ['rust'],
+        \ })
+endif
+
+if executable('rust-analyzer')
+  au User lsp_setup call lsp#register_server({
+        \   'name': 'Rust Language Server',
+        \   'cmd': {server_info->['rust-analyzer']},
+        \   'whitelist': ['rust'],
+        \   'initialization_options': {
+        \     'cargo': {
+        \       'buildScripts': {
+        \         'enable': v:true,
+        \       },
+        \     },
+        \     'procMacro': {
+        \       'enable': v:true,
+        \     },
+        \   },
+        \ })
+endif
+
 set t_Co=256
 set encoding=utf-8
 set laststatus=2
@@ -170,6 +184,10 @@ set hlsearch
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+
+let g:airline_theme='sobrio'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 if has("nvim")
   colorscheme peaksea
