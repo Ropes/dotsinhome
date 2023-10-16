@@ -5,13 +5,18 @@ endif
 
 " Required:
 "  Add or remove your plugins here like this:
-"  call dein#add('~/.cache/dein/repos/github.com/fatih/vim-go')
-"  call dein#add('~/.cache/dein/repos/github.com/vim-airline/vim-airline')
-"  call dein#add('~/.cache/dein/repos/github.com/airblade/vim-gitgutter')
-"  call dein#add('~/.cache/dein/repos/github.com/ctrlpvim/ctrlp.vim')
-"  call dein#add('~/.cache/dein/repos/github.com/easymotion/vim-easymotion')
-"  call dein#add('Shougo/neosnippet.vim')
-"  call dein#add('Shougo/neosnippet-snippets')
+" Required:
+"set runtimepath+=/home/ropes/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+"if dein#load_state('/home/ropes/.cache/dein')
+"  call dein#begin('/home/ropes/.cache/dein')
+"
+"  Let dein manage dein
+"  Required:
+"  call dein#add('/home/ropes/.cache/dein/repos/github.com/Shougo/dein.vim')
+"
+"  " Add or remove your plugins here like this:
 
 
 call plug#begin()
